@@ -1,0 +1,33 @@
+.main_title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+
+  &_list {
+    flex: 60%;
+  }
+
+  &_info-card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 40%;
+  }
+
+  &_btn-loader {
+    display: block;
+    min-width: calc(100% - 30px);
+    max-height: 40px;
+    margin: 0 auto 20px;
+  }
+}
+
+.form-control {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 200px;
+}

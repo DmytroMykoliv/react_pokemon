@@ -1,9 +1,21 @@
-# React TypeScript Starter Pack
+# React Pokemon
 
-To use this template click `Use this template`
+  This project contains information about monsters from the popular game Pokemon download from the server.
 
-### Available Scripts
+  [DEMO LINK](https://dmytromykoliv.github.io/react_pokemon/)
 
-`Deploy` - available to deploy your application to gh-pages
+### Description
 
-`SCSS Preprocessor` - available to write your styles with modern style language
+  The initial download starts with 12 monsters, clicking the "Download more" button will download another 12 monsters.
+  By clicking on the monster card, you will get detailed information about this Pokemon. There is also the possibility of filtering monsters by type.
+
+### Installing
+
+1.  Fork and clone this repository
+1.  Run `npm install` in your terminal
+1.  Run `npm start`
+1.  Go to `develop` branch to see more info about code and link
+
+### Troubleshooting
+
+For any contributing or problem solving you could find me [telegram](https://t.me/AmigoDelUA) or [email](dmytro.i.mykoliv@gmail.com)
