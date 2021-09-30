@@ -14,7 +14,6 @@
 1.  Fork and clone this repository
 1.  Run `npm install` in your terminal
 1.  Run `npm start`
-1.  Go to `develop` branch to see more info about code and link
 
 ### Troubleshooting
 
