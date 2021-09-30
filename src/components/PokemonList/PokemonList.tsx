@@ -11,6 +11,7 @@ export const PokemonList: React.FC = () => {
   const [types, setTypes] = useState<Type[]>([]);
   const [loadLimit, setLoadLimit] = useState(12);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+  const [selectedType, setSelectedType] = useState<string>('');
   const [isSelectedPokemon, setIsSelectedPokemon] = useState(false);
   const [isError, setError] = useState(false);
 
@@ -73,13 +74,23 @@ export const PokemonList: React.FC = () => {
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     filteredByTypes(event.target.value);
+    setSelectedType(event.target.value);
+  };
+
+  const handleClick = () => {
+    setLoadLimit(loadLimit + 12);
+    setSelectedType('All');
   };
 
   return (
     <main>
       <h1 className="main_title">Pokedex</h1>
 
-      <FilterByTypes onHandleSelect={handleSelect} types={types} />
+      <FilterByTypes
+        onHandleSelect={handleSelect}
+        selectedType={selectedType}
+        types={types}
+      />
 
       {isError ? ('Something went wrong') : (
         <section className="container">
@@ -121,7 +132,7 @@ export const PokemonList: React.FC = () => {
             <button
               className="btn btn-primary container_btn-loader"
               type="button"
-              onClick={() => setLoadLimit(loadLimit + 12)}
+              onClick={() => handleClick()}
             >
               Load More
             </button>

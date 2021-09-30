@@ -2,14 +2,15 @@ import React from 'react';
 
 type Props = {
   types: Type[],
+  selectedType: string,
   onHandleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void,
 };
 
 export const FilterByTypes: React.FC<Props> = (props) => {
-  const { onHandleSelect, types } = props;
+  const { onHandleSelect, types, selectedType } = props;
 
   return (
-    <select className="form-control" onChange={onHandleSelect}>
+    <select className="form-control" value={selectedType} onChange={onHandleSelect}>
       <option value="All">All</option>
       {types.map(type => (
         <option
