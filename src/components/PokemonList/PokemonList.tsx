@@ -14,6 +14,7 @@ export const PokemonList: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string>('');
   const [isSelectedPokemon, setIsSelectedPokemon] = useState(false);
   const [isError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const loadData = () => {
     (async () => {
@@ -31,6 +32,7 @@ export const PokemonList: React.FC = () => {
         setPokemonsData(loadPokemons);
         setPokemons(loadPokemons);
         setError(false);
+        setLoading(true);
       } catch {
         setError(true);
       }
@@ -95,53 +97,65 @@ export const PokemonList: React.FC = () => {
       {isError ? ('Something went wrong') : (
         <section className="container">
           <article className="row row-cols-1 row-cols-md-3 container_list">
-            {pokemons.length > 0 ? (pokemons.map((pokemon: Pokemon) => {
-              return (
-                <div key={pokemon.id} className="col mb-4">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    className="card"
-                    onClick={() => getSelectedPokemon(pokemon)}
-                    onKeyPress={() => getSelectedPokemon(pokemon)}
-                  >
-                    <img
-                      src={pokemon.sprites.front_default}
-                      className="card-img-top"
-                      alt={`pokemon ${pokemon.name}`}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{pokemon.name}</h5>
-                      <div className="card_types">
-                        {pokemon.types.map(type => {
-                          const { url, name } = type.type;
+            {isLoading ? (
+              <>
+                {pokemons.length > 0 ? (pokemons.map((pokemon: Pokemon) => {
+                  return (
+                    <div key={pokemon.id} className="col mb-4">
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className="card"
+                        onClick={() => getSelectedPokemon(pokemon)}
+                        onKeyPress={() => getSelectedPokemon(pokemon)}
+                      >
+                        <img
+                          src={pokemon.sprites.front_default}
+                          className="card-img-top"
+                          alt={`pokemon ${pokemon.name}`}
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{pokemon.name}</h5>
+                          <div className="card_types">
+                            {pokemon.types.map(type => {
+                              const { url, name } = type.type;
 
-                          return (
-                            <p key={url} className={`card_type-item card_type-item--${name}`}>
-                              {name}
-                            </p>
-                          );
-                        })}
+                              return (
+                                <p key={url} className={`card_type-item card_type-item--${name}`}>
+                                  {name}
+                                </p>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })) : 'Need to load more pokemons ))'}
+                  );
+                })) : (
+                  <p className="container_message">Need to load more pokemons ))</p>
+                )}
 
-            <button
-              className="btn btn-primary container_btn-loader"
-              type="button"
-              onClick={() => handleClick()}
-            >
-              Load More
-            </button>
+                <button
+                  className="btn btn-primary container_btn-loader"
+                  type="button"
+                  onClick={() => handleClick()}
+                >
+                  Load More
+                </button>
+              </>
+            ) : (
+              <div className="container_spinner">
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              </div>
+            )}
           </article>
 
-          <article className="container_info-card">
-            {isSelectedPokemon && selectedPokemon
-              && <SelectedCard selectedPokemon={selectedPokemon} />}
-          </article>
+          {isSelectedPokemon && selectedPokemon
+            && (
+              <article className="container_info-card">
+                <SelectedCard selectedPokemon={selectedPokemon} />
+              </article>
+            )}
         </section>
       )}
     </main>

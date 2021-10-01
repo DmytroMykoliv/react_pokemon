@@ -15,6 +15,10 @@
     justify-content: center;
     align-items: flex-start;
     flex: 40%;
+    max-height: 400px;
+
+    position: sticky;
+    top: 20px;
   }
 
   &_btn-loader {
@@ -23,11 +27,14 @@
     max-height: 40px;
     margin: 0 auto 20px;
   }
+
+  &_message {
+    margin: 5px auto;
+    font-style: italic;
+  }
+
+  &_spinner {
+    margin: 0 auto;
+  }
 }
 
-.form-control {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  width: 200px;
-}
