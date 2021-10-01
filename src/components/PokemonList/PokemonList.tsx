@@ -17,6 +17,7 @@ export const PokemonList: React.FC = () => {
   const [isLoading, setLoading] = useState(false);
 
   const loadData = () => {
+    setLoading(false);
     (async () => {
       try {
         const pokemonsFromApi: Api = await request(loadLimit);
