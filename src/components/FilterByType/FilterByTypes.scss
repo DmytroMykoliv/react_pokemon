@@ -1,0 +1,10 @@
+.form {
+  &-control {
+    margin: 20px auto;
+    max-width: 300px;
+  }
+
+  &_options {
+    text-transform: capitalize;
+  }
+}

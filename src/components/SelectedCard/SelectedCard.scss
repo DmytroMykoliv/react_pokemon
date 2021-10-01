@@ -1,0 +1,69 @@
+@import "./utils/vars";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-shadow: 0 0 15px #bebdbd;
+  cursor: pointer;
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+
+    &--info {
+      padding-top: 0;
+    }
+  }
+
+  &_info {
+    width: 100%;
+    max-width: 250px;
+
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #bebdbd;
+  }
+
+  &-title {
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  &_types {
+    display: flex;
+    gap: 5px;
+  }
+
+  &_type-item {
+    margin: 0;
+    border: 1px solid #000;
+    border-radius: 6%;
+    width: 100%;
+    max-width: 90px;
+
+    font-size: 16px;
+    text-align: center;
+
+    @each $name, $background in $bgType {
+      &--#{$name} {
+        background: $background;
+      }
+    }
+  }
+
+  &_table {
+    height: 200px;
+
+    font-size: 14px;
+
+    & th, td {
+      padding: 5px 10px;
+      text-align: center;
+      text-transform: capitalize;
+    }
+  }
+}
