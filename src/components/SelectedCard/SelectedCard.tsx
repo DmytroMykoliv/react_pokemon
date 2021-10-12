@@ -32,17 +32,17 @@ export const SelectedCard: React.FC<Props> = (props) => {
           <tbody>
             {stats.map(item => (
               <tr key={item.stat.name}>
-                <th>{`${item.stat.name}`}</th>
-                <td>{`${item.base_stat}`}</td>
+                <th>{item.stat.name}</th>
+                <td>{item.base_stat}</td>
               </tr>
             ))}
             <tr>
               <th>Weight</th>
-              <td>{`${weight}`}</td>
+              <td>{weight}</td>
             </tr>
             <tr>
               <th>Total moves</th>
-              <td>{`${moves.length}`}</td>
+              <td>{moves.length}</td>
             </tr>
           </tbody>
         </table>
